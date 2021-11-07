@@ -23,6 +23,7 @@ coverage
 
 # API keys and secrets
 .env
+secrets
 
 # Dependency directory
 node_modules
@@ -43,5 +44,6 @@ dist/**/*
 # ignore yarn.lock
 yarn.lock
 
-# Secrets
-secrets
+# We'll be using typescript so let's ignore js files
+*.js
+
