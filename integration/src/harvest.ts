@@ -8,7 +8,7 @@ export interface HarvestUser {
 	email: string;
 }
 
-export const getAllUsers = async function getAllUsers(): Promise<HarvestUser[]> {
+export const getAllUsers = async (): Promise<HarvestUser[]> => {
 	return client.get<HarvestUser[]>('/users')
 	  .then((response: AxiosResponse) => {
 			//console.log(response.data);
@@ -24,7 +24,7 @@ function findUser(name: string): void {
 		});
 }
 
-export const findUserById = async function findUserById(id: number): Promise<HarvestUser> {
+export const findUserById = async (id: number): Promise<HarvestUser> => {
 	console.log(`Getting user ${id}`);
 	return client.get<HarvestUser>(`/users/${id}`)  
 		.then((response: AxiosResponse) => {
