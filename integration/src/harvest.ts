@@ -2,6 +2,7 @@ import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } f
 import { processenv } from 'processenv';
 import { AxiosPromise } from 'axios';
 import { request } from 'http';
+
 const config: AxiosRequestConfig = {
 	baseURL: 'https://api.harvestapp.com/api/v2/',
 	headers: {
@@ -52,8 +53,21 @@ function findUser(name: string): void {
 		});
 }
 
+function findUserById(id: number): Promise<HarvestUser> {
+	console.log(`Getting user ${id}`);
+	return client.get<HarvestUser>(`/users/${id}`)  
+		.then((response: AxiosResponse) => {
+			console.log(response.status);
+			//console.debug(response.data);
+			return response.data;
+		});
+}
+
 getAllUsers().then((users: HarvestUser[]) => {
 	users.forEach(user => console.log(user.email));
 }).catch(rejected => {
 	console.error('Failed to get users');
-})
+});
+
+//findUserById(1428546);
+findUserById(1428545);
