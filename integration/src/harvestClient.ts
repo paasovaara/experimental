@@ -8,7 +8,8 @@ const config: AxiosRequestConfig = {
 		'Harvest-Account-ID': `${processenv('HARVEST_ACCOUNT_ID')}`,
 		'User-Agent': 'Harvest-integration',
 		'Authorization': `Bearer ${processenv('HARVEST_SECRET')}`,
-	}
+	},
+  timeout: 3000
 };
 
 export const harvestClient: AxiosInstance = axios.create(config);
